@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -70,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Se slecciono :"+
                             listaTrabajos.get(recyclerViewTrabajos.getChildAdapterPosition(v)).getNombre(),
                             Toast.LENGTH_SHORT).show();
+                    if (listaTrabajos.get(recyclerViewTrabajos.getChildAdapterPosition(v)).getNombre()=="Krusty"){
+                        Intent intent = new Intent(MainActivity.this, login.class);
+                        startActivity(intent);
+
+                    }
                 }
             });
             recyclerViewTrabajos.setAdapter(adaptadorTrabajos);
