@@ -1,7 +1,6 @@
-package com.comcop.abogados;
+package com.comcop.abogados.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.comcop.abogados.R;
+import com.comcop.abogados.models.Utilidades;
+import com.comcop.abogados.models.TrabajosVo;
 
 import java.util.ArrayList;
 

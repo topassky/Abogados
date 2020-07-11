@@ -1,4 +1,4 @@
-package com.comcop.abogados;
+package com.comcop.abogados.models;
 
 public class TrabajosVo {
 

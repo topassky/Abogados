@@ -1,4 +1,4 @@
-package com.comcop.abogados;
+package com.comcop.abogados.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.comcop.abogados.R;
+import com.comcop.abogados.models.TrabajosVo;
+import com.comcop.abogados.models.Utilidades;
 
 import java.util.ArrayList;
 
@@ -28,7 +32,7 @@ public class AdaptadorTrabajos extends RecyclerView.Adapter<AdaptadorTrabajos.Vi
     public ViewHolderTrabajos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         int layout = 0;
         if (Utilidades.visualizacion==Utilidades.SERVICIOS){
-            layout=R.layout.item_profesiones;
+            layout= R.layout.item_profesiones;
         }else{
             layout=R.layout.item_servicios;
         }
