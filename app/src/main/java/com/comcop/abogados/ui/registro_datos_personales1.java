@@ -1,20 +1,29 @@
 package com.comcop.abogados.ui;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.comcop.abogados.R;
 import java.util.Calendar;
+
+import javax.xml.transform.Result;
 
 public class registro_datos_personales1 extends AppCompatActivity {
     EditText EditNacimiento;
@@ -24,6 +33,8 @@ public class registro_datos_personales1 extends AppCompatActivity {
 
     RadioGroup radioGroup;
     RadioButton radioButton;
+
+    ImageView imagen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +70,12 @@ public class registro_datos_personales1 extends AppCompatActivity {
             }
         });
 
+        /**
+         * Ingresar una imagen desde la galeria.
+         */
+
+        imagen = (ImageView) findViewById(R.id.imggaleria);
+
     }
 
     private void checkButton(){
@@ -90,5 +107,26 @@ public class registro_datos_personales1 extends AppCompatActivity {
                 return new DatePickerDialog(this, mDateSetListener, sYearIni, sMonthIni, sDayIni);
         }
         return null;
+    }
+
+    public void OnClick(View view) {
+        cargarImagen();
+    }
+
+    private void cargarImagen() {
+        Toast.makeText(getApplicationContext(),"Se slecciono :", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        intent.setType("image/");
+        startActivityForResult(intent.createChooser(intent,"Seleccione la aplicación"),10);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(resultCode==RESULT_OK){
+            Uri miPath=data.getData();
+            imagen.setImageURI(miPath);
+        }
     }
 }
