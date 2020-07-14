@@ -78,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
                         Intent intent = new Intent(MainActivity.this, login.class);
                         startActivity(intent);
 
+                    }else if(listaTrabajos.get(recyclerViewTrabajos.getChildAdapterPosition(v)).getNombre()=="Homero"){
+                        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+                        startActivity(intent);
                     }
                 }
             });

@@ -3,6 +3,10 @@
     package="com.comcop.abogados">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
@@ -11,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.cargando"></activity>
+        <activity android:name=".ui.MapsActivity"></activity>
+        <activity android:name=".ui.cargando" />
         <activity android:name=".ui.registro_datos_personales1" />
         <activity android:name=".ui.login" />
         <activity android:name=".ui.MainActivity">
@@ -21,6 +26,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAKKhWd3WoADg0xWCxoh7xQ2Rmky2Mnyp4"/>
+
     </application>
 
 </manifest>
