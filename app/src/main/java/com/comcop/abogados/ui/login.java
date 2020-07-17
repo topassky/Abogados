@@ -13,7 +13,7 @@ import com.comcop.abogados.R;
 
 public class login extends AppCompatActivity {
 
-    EditText etEmail, etPassword;
+    public static EditText etEmail, etPassword;
     TextView tvRegister;
     Button btnLogin;
 
