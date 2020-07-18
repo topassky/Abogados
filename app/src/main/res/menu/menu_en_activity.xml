@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.prueba"
+    >
+
+    <item android:id="@+id/Hombre"
+        android:title="Hombre"/>
+    <item android:id="@+id/Mujer"
+        android:title="Mujer"/>
+    <item android:id="@+id/Otro"
+        android:title="Otro"/>
+
+</menu>

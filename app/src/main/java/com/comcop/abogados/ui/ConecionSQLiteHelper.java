@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.example.ciclista_actual.utilities.Utilities;
+///import com.example.ciclista_actual.utilities.Utilities;
 
 public class ConecionSQLiteHelper extends SQLiteOpenHelper {
 

@@ -11,30 +11,38 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.comcop.abogados.R;
+import com.comcop.abogados.models.Utilidades;
+
 import java.util.Calendar;
 
 import javax.xml.transform.Result;
 
-public class registro_datos_personales1 extends AppCompatActivity {
-    EditText EditNacimiento;
+public class registro_datos_personales1 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+
     private int mYearIni, mMonthIni, mDayIni, sYearIni, sMonthIni, sDayIni;
     static final int DATE_ID = 0;
     Calendar C = Calendar.getInstance();
 
+    EditText EditNacimiento,EditSexo;
+    TextView numTabla;
     RadioGroup radioGroup;
     RadioButton radioButton;
-
     ImageView imagen;
+    //public int num_tabla=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +56,8 @@ public class registro_datos_personales1 extends AppCompatActivity {
         sDayIni = C.get(Calendar.DAY_OF_MONTH);
         sYearIni = C.get(Calendar.YEAR);
         EditNacimiento = (EditText) findViewById(R.id.EditNacimiento);
+        numTabla = (TextView) findViewById(R.id.numTabla);
+        numTabla.setText(Utilidades.REGISTRO +"-n");
 
         EditNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,14 +71,14 @@ public class registro_datos_personales1 extends AppCompatActivity {
          * Registro del sexo.
          */
 
-        radioGroup =findViewById(R.id.RadioGroupSexo);
-        Button buttonSiguiente = findViewById(R.id.Siguiente1);
-        buttonSiguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkButton();
-            }
-        });
+       // radioGroup =findViewById(R.id.RadioGroupSexo);
+        //Button buttonSiguiente = findViewById(R.id.Siguiente1);
+        //buttonSiguiente.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        checkButton();
+        //    }
+        //});
 
         /**
          * Ingresar una imagen desde la galeria.
@@ -76,6 +86,11 @@ public class registro_datos_personales1 extends AppCompatActivity {
 
         imagen = (ImageView) findViewById(R.id.imggaleria);
 
+        /**
+         * Registro del boton se sexo
+         */
+
+        EditSexo = (EditText) findViewById(R.id.EditSexo);
     }
 
     private void checkButton(){
@@ -128,5 +143,51 @@ public class registro_datos_personales1 extends AppCompatActivity {
             Uri miPath=data.getData();
             imagen.setImageURI(miPath);
         }
+    }
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_en_activity, popup.getMenu());
+        popup.setOnMenuItemClickListener(registro_datos_personales1.this);
+        popup.show();
+    }
+
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.Hombre:
+                //archive(item);
+                //Toast.makeText(getApplicationContext(),"Hombre :", Toast.LENGTH_SHORT).show();
+                EditSexo.setText("Hombre");
+                return true;
+            case R.id.Mujer:
+                //delete(item);
+                EditSexo.setText("Mujer");
+                return true;
+            case R.id.Otro:
+                //delete(item);
+                EditSexo.setText("¿Cuál?");
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    public void OnClickSiguiente(View view) {
+        switch (view.getId()){
+            case R.id.Siguiente1:
+                Utilidades.REGISTRO=Utilidades.REGISTRO+1;
+                Intent intent = new Intent(registro_datos_personales1.this, registro_datos_personales2.class);
+                startActivity(intent);
+
+                break;
+            case R.id.Anteorior:
+
+                break;
+        }
+
+
     }
 }
