@@ -14,10 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.registro_datos_personales2"></activity>
+        <activity android:name=".ui.hojaVida.registro_datos_personales4"></activity>
+        <activity android:name=".ui.hojaVida.registro_datos_personales3" />
+        <activity android:name=".ui.hojaVida.registro_datos_personales2" />
         <activity android:name=".ui.MapsActivity" />
         <activity android:name=".ui.cargando" />
-        <activity android:name=".ui.registro_datos_personales1" />
+        <activity android:name=".ui.hojaVida.registro_datos_personales1" />
         <activity android:name=".ui.login" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>

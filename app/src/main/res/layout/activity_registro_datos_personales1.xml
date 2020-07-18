@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/brackground_02"
-    tools:context=".ui.registro_datos_personales1">
+    tools:context=".ui.hojaVida.registro_datos_personales1">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -317,6 +317,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
+        android:text="1-n"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"

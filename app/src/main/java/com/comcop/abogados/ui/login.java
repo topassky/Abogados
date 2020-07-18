@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.comcop.abogados.R;
+import com.comcop.abogados.ui.hojaVida.registro_datos_personales1;
 
 public class login extends AppCompatActivity {
 

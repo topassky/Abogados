@@ -1,4 +1,4 @@
-package com.comcop.abogados.ui;
+package com.comcop.abogados.ui.hojaVida;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,15 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,8 +26,6 @@ import com.comcop.abogados.models.Utilidades;
 
 import java.util.Calendar;
 
-import javax.xml.transform.Result;
-
 public class registro_datos_personales1 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private int mYearIni, mMonthIni, mDayIni, sYearIni, sMonthIni, sDayIni;
@@ -38,7 +33,6 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
     Calendar C = Calendar.getInstance();
 
     EditText EditNacimiento,EditSexo;
-    TextView numTabla;
     RadioGroup radioGroup;
     RadioButton radioButton;
     ImageView imagen;
@@ -56,8 +50,6 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
         sDayIni = C.get(Calendar.DAY_OF_MONTH);
         sYearIni = C.get(Calendar.YEAR);
         EditNacimiento = (EditText) findViewById(R.id.EditNacimiento);
-        numTabla = (TextView) findViewById(R.id.numTabla);
-        numTabla.setText(Utilidades.REGISTRO +"-n");
 
         EditNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override

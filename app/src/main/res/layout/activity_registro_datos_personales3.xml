@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.hojaVida.registro_datos_personales2"
-    android:background="@drawable/brackground_02"
-    >
+    tools:context=".ui.hojaVida.registro_datos_personales3"
+    android:background="@drawable/brackground_02">
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
@@ -44,8 +43,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
-        android:text="2-n"
         android:textColor="#ffffff"
+        android:text="3-n"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
@@ -61,6 +60,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline13"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
