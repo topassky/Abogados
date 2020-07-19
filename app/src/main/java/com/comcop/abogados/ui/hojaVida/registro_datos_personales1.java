@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,12 +27,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.comcop.abogados.R;
-import com.comcop.abogados.models.Utilidades;
 
+
+import java.io.File;
 import java.util.Calendar;
 
 public class registro_datos_personales1 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
+    private static final String CARPETA_PRINCIPAL="misImagenesApp/";
+    private static final String CARPETA_IMAGEN="imagenes";
+    private static final String DIRECTORIO_IMAGEN=CARPETA_PRINCIPAL+CARPETA_IMAGEN;
+    private String path;
+    File fileImagen;
+    Bitmap bitmap;
+
+    private static final int COD_SELECCIONA = 10;
+    private static final int COD_FOTO = 20;
     private int mYearIni, mMonthIni, mDayIni, sYearIni, sMonthIni, sDayIni;
     static final int DATE_ID = 0;
     Calendar C = Calendar.getInstance();
@@ -117,24 +132,68 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
     }
 
     public void OnClick(View view) {
-        cargarImagen();
+        switch (view.getId()){
+            case R.id.subirImage:
+                cargarImagen();
+                break;
+            case R.id.SubirFoto:
+                subirFotografia();
+                break;
+        }
+
+    }
+
+    private void subirFotografia() {
+        File miFile = new File(Environment.getExternalStorageDirectory(),DIRECTORIO_IMAGEN);
+        boolean isCreate=miFile.exists();
+        if(isCreate==false){
+            isCreate=miFile.mkdirs();
+        }
+        if(isCreate==true){
+            Long consecutivo=System.currentTimeMillis()/1000;
+            String nombre =consecutivo.toString()+".jpg";
+
+            path =Environment.getExternalStorageDirectory()+File.separator+DIRECTORIO_IMAGEN
+                    +File.separator+nombre;
+            fileImagen=new File(path);
+            Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(fileImagen));
+            startActivityForResult(intent,COD_FOTO);
+        }
     }
 
     private void cargarImagen() {
-        Toast.makeText(getApplicationContext(),"Se slecciono :", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Se slecciono :", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/");
-        startActivityForResult(intent.createChooser(intent,"Seleccione la aplicación"),10);
+        startActivityForResult(intent.createChooser(intent,"Seleccione la aplicación"),COD_SELECCIONA);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode==RESULT_OK){
-            Uri miPath=data.getData();
-            imagen.setImageURI(miPath);
+        switch (requestCode){
+            case COD_SELECCIONA:
+                Uri miPath=data.getData();
+                imagen.setImageURI(miPath);
+             break;
+
+            case COD_FOTO:
+                MediaScannerConnection.scanFile(this, new String[]{path}, null,
+                        new MediaScannerConnection.OnScanCompletedListener() {
+                            @Override
+                            public void onScanCompleted(String s, Uri uri) {
+                                Log.i("Path",""+path);
+                            }
+                        });
+                bitmap= BitmapFactory.decodeFile(path);
+                imagen.setImageBitmap(bitmap);
+                break;
+
+
         }
+
     }
 
     public void showPopup(View v) {
@@ -170,7 +229,7 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
     public void OnClickSiguiente(View view) {
         switch (view.getId()){
             case R.id.Siguiente1:
-                Utilidades.REGISTRO=Utilidades.REGISTRO+1;
+
                 Intent intent = new Intent(registro_datos_personales1.this, registro_datos_personales2.class);
                 startActivity(intent);
 

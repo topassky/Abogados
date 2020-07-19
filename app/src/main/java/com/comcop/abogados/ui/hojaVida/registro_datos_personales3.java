@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.comcop.abogados.R;
-import com.comcop.abogados.models.Utilidades;
+
 
 public class registro_datos_personales3 extends AppCompatActivity {
 
@@ -23,13 +23,13 @@ public class registro_datos_personales3 extends AppCompatActivity {
     public void OnClickSiguiente(View view) {
         switch (view.getId()){
             case R.id.Siguiente1:
-                Utilidades.REGISTRO=Utilidades.REGISTRO+1;
+
                 //Toast.makeText(this,"Numero"+ Utilidades.REGISTRO,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(registro_datos_personales3.this, registro_datos_personales4.class);
                 startActivity(intent);
                 break;
             case R.id.Anteorior:
-                Utilidades.REGISTRO=Utilidades.REGISTRO-1;
+
                 //Toast.makeText(this,"Numero"+ Utilidades.REGISTRO,Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(registro_datos_personales3.this, registro_datos_personales2.class);
                 startActivity(i);
