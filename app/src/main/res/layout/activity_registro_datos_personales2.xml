@@ -254,7 +254,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
     <EditText
-        android:id="@+id/textView4"
+        android:id="@+id/EditConducion"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -286,19 +286,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline18" />
-
-    <EditText
-        android:id="@+id/textView7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline19"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -357,11 +344,12 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/button_rectange_color"
         android:src="@drawable/ic_action_sexo"
+        android:onClick="OnClickConduccion"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline17" />
-
+<!--
     <ImageButton
         android:id="@+id/button3"
         android:layout_width="0dp"
@@ -374,6 +362,7 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline18" />
+        -->
 
     <ImageButton
         android:id="@+id/button4"
@@ -387,6 +376,30 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toTopOf="@+id/guideline19" />
+
+    <RadioGroup
+        android:id="@+id/Vehiculo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline18"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <RadioButton
+            android:id="@+id/radioSi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Si" />
+
+        <RadioButton
+            android:id="@+id/radioNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

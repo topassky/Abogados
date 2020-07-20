@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import com.comcop.abogados.R;
 public class registro_datos_personales2 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     EditText EditSoltero;
+    EditText EdiTconduccion;
 
 
     @Override
@@ -27,9 +29,24 @@ public class registro_datos_personales2 extends AppCompatActivity implements Pop
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_datos_personales2);
         EditSoltero = (EditText) findViewById(R.id.EdiEstadoCivil);
-
+        EdiTconduccion=(EditText) findViewById(R.id.EditConducion);
     }
     public void OnClickSiguiente(View view) {
+
+        RadioGroup rg = (RadioGroup)findViewById(R.id.Vehiculo);
+        int option = rg.getCheckedRadioButtonId();
+        String output = "";
+
+        switch (option)
+        {
+            case R.id.radioSi: output = "Si";
+                break;
+            case R.id.radioNo: output = "No";
+                break;
+            default: output = "No buttons selected";
+
+        }
+
         switch (view.getId()){
             case R.id.Siguiente1:
 
@@ -75,11 +92,51 @@ public class registro_datos_personales2 extends AppCompatActivity implements Pop
                 //delete(item);
                 EditSoltero.setText("Viudo(a)");
                 return true;
+            case R.id.A1:
+                //delete(item);
+                EdiTconduccion.setText("A1");
+                return true;
+            case R.id.A2:
+                //delete(item);
+                EdiTconduccion.setText("A2");
+                return true;
+            case R.id.B1:
+                //delete(item);
+                EdiTconduccion.setText("B1");
+                return true;
+            case R.id.B2:
+                //delete(item);
+                EdiTconduccion.setText("B2");
+                return true;
+            case R.id.B3:
+                //delete(item);
+                EdiTconduccion.setText("B3");
+                return true;
+            case R.id.C1:
+                //delete(item);
+                EdiTconduccion.setText("C1");
+                return true;
+            case R.id.C2:
+                //delete(item);
+                EdiTconduccion.setText("C2");
+                return true;
+            case R.id.C3:
+                //delete(item);
+                EdiTconduccion.setText("C3");
+                return true;
             default:
                 return false;
         }
     }
 
+
+    public void OnClickConduccion(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_conduccion, popup.getMenu());
+        popup.setOnMenuItemClickListener(registro_datos_personales2.this);
+        popup.show();
+    }
 
 
 }

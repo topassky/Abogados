@@ -8,6 +8,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
@@ -47,12 +49,13 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
     static final int DATE_ID = 0;
     Calendar C = Calendar.getInstance();
 
-    EditText EditNacimiento,EditSexo;
+    EditText EditSexo;
+    TextView mDisplayDate;
     RadioGroup radioGroup;
     RadioButton radioButton;
     ImageView imagen;
     //public int num_tabla=1;
-
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,18 +64,37 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
          * Registro de la fecha de nacimiento
          */
         setContentView(R.layout.activity_registro_datos_personales1);
-        sMonthIni = C.get(Calendar.MONTH);
-        sDayIni = C.get(Calendar.DAY_OF_MONTH);
-        sYearIni = C.get(Calendar.YEAR);
-        EditNacimiento = (EditText) findViewById(R.id.EditNacimiento);
+        mDisplayDate= (TextView) findViewById(R.id.EditNacimiento);
 
-        EditNacimiento.setOnClickListener(new View.OnClickListener() {
+
+        mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                showDialog(DATE_ID);
+                DatePickerDialog dialog = new DatePickerDialog(
+                        registro_datos_personales1.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
             }
         });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                //Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
+
+                String date = month + "/" + day + "/" + year;
+                mDisplayDate.setText(date);
+            }
+        };
 
         /**
          * Registro del sexo.
@@ -106,30 +128,6 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
         Toast.makeText(this,"Selección de +"+radioButton.getText(),Toast.LENGTH_SHORT).show();
     }
 
-    private void colocar_fecha() {
-        EditNacimiento.setText((mMonthIni + 1) + "-" + mDayIni + "-" + mYearIni+" ");
-    }
-
-
-    private DatePickerDialog.OnDateSetListener mDateSetListener =
-            new DatePickerDialog.OnDateSetListener() {
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    mYearIni = year;
-                    mMonthIni = monthOfYear;
-                    mDayIni = dayOfMonth;
-                    colocar_fecha();
-                }
-            };
-
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        switch (id) {
-            case DATE_ID:
-                return new DatePickerDialog(this, mDateSetListener, sYearIni, sMonthIni, sDayIni);
-        }
-        return null;
-    }
 
     public void OnClick(View view) {
         switch (view.getId()){
@@ -227,6 +225,8 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
     }
 
     public void OnClickSiguiente(View view) {
+
+
         switch (view.getId()){
             case R.id.Siguiente1:
 
@@ -241,4 +241,6 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
 
 
     }
+
+
 }

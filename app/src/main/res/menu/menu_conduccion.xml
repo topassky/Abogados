@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/A1"
+        android:title="A1"/>
+    <item android:id="@+id/A2"
+        android:title="A2"/>
+    <item android:id="@+id/B1"
+        android:title="B1"/>
+    <item android:id="@+id/B2"
+        android:title="B2"/>
+    <item android:id="@+id/B3"
+        android:title="B3"/>
+    <item android:id="@+id/C1"
+        android:title="C1"/>
+    <item android:id="@+id/C2"
+        android:title="C2"/>
+    <item android:id="@+id/C3"
+        android:title="C3"/>
+
+</menu>

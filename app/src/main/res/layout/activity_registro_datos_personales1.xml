@@ -165,7 +165,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
-    <EditText
+    <TextView
         android:id="@+id/EditNacimiento"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -173,6 +173,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:text="Ingresar fecha"
+        android:textColor="#ffffff"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
