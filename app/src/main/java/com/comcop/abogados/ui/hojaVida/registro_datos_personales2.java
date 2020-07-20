@@ -20,9 +20,7 @@ import com.comcop.abogados.R;
 
 public class registro_datos_personales2 extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    EditText EditSoltero;
-    EditText EdiTconduccion;
-
+    EditText EditSoltero,EdiTconduccion,editDiscapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +28,7 @@ public class registro_datos_personales2 extends AppCompatActivity implements Pop
         setContentView(R.layout.activity_registro_datos_personales2);
         EditSoltero = (EditText) findViewById(R.id.EdiEstadoCivil);
         EdiTconduccion=(EditText) findViewById(R.id.EditConducion);
+        editDiscapa=(EditText) findViewById(R.id.editDiscapa);
     }
     public void OnClickSiguiente(View view) {
 
@@ -124,6 +123,20 @@ public class registro_datos_personales2 extends AppCompatActivity implements Pop
                 //delete(item);
                 EdiTconduccion.setText("C3");
                 return true;
+            case R.id.SiDisca:
+                //delete(item);
+                editDiscapa.setText("Si");
+                return true;
+            case R.id.NoDisca:
+                //delete(item);
+                editDiscapa.setText("No");
+                return true;
+
+            case R.id.CualDisca:
+                //delete(item);
+                editDiscapa.setText("¿Cuál?");
+                return true;
+
             default:
                 return false;
         }
@@ -139,4 +152,11 @@ public class registro_datos_personales2 extends AppCompatActivity implements Pop
     }
 
 
+    public void OnClickDiscapacidad(View view) {
+        PopupMenu popup = new PopupMenu(this, view);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu_discapacidad, popup.getMenu());
+        popup.setOnMenuItemClickListener(registro_datos_personales2.this);
+        popup.show();
+    }
 }
