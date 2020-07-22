@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.hojaVida.registro_datos_personales5"></activity>
+        <activity android:name=".ui.hojaVida.experienciaLaboral"></activity>
+        <activity android:name=".ui.hojaVida.registro_datos_personales5" />
         <activity android:name=".ui.hojaVida.registro_datos_personales4" />
         <activity android:name=".ui.hojaVida.registro_datos_personales3" />
         <activity android:name=".ui.hojaVida.registro_datos_personales2" />

@@ -71,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
             adaptadorTrabajos.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(),"Se slecciono :"+
-                            listaTrabajos.get(recyclerViewTrabajos.getChildAdapterPosition(v)).getNombre(),
-                            Toast.LENGTH_SHORT).show();
                     if (listaTrabajos.get(recyclerViewTrabajos.getChildAdapterPosition(v)).getNombre()=="Krusty"){
                         Intent intent = new Intent(MainActivity.this, login.class);
                         startActivity(intent);

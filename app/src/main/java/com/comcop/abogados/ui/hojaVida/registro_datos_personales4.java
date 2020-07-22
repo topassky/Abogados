@@ -55,4 +55,9 @@ public class registro_datos_personales4 extends AppCompatActivity {
         }
     }
 
+    public void OnClickExperiencia(View view) {
+        Intent intent = new Intent(registro_datos_personales4.this, experienciaLaboral.class);
+        startActivity(intent);
+
+    }
 }
