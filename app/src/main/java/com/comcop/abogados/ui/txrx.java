@@ -260,12 +260,16 @@ public class txrx  extends AsyncTask<String, Void, String> {
                 }
                 else if (mode.equals("all")){
                     registrosJSON = respuestaJSON.getJSONArray("registros");
+                    /*
                     for (int i=0; i < registrosJSON.length(); i++){ //Se recorre el ARRAY y se asigna a la variable String
                         regreso = regreso + registrosJSON.getJSONObject(i).getString("idAlumno") + " " +
                                 registrosJSON.getJSONObject(i).getString("nombre") + " " +
                                 registrosJSON.getJSONObject(i).getString(Utilities.idVentana) + " " +
                                 registrosJSON.getJSONObject(i).getString(Utilities.tour) + "\n";
                     }
+
+                     */
+
 
                 }else if (mode.equals("single")){
                     //registrosJSON = respuestaJSON.getJSONArray("registros");
@@ -368,12 +372,14 @@ public class txrx  extends AsyncTask<String, Void, String> {
 
                     ConecionSQLiteHelper conn = new ConecionSQLiteHelper( context, "db_user4",null,6);
                     SQLiteDatabase db = conn.getWritableDatabase();
-
+/*
                     String insert = "INSERT INTO " + Utilities.tblConfiguracion +" (" + Utilities.idconfig + " ,"
                             + Utilities.cache1+ ")"+  " VALUES " +  " ('" + 1 + "','" + result+"'"+ ")";
                     //System.out.println("488+ se ha escrito el fichero en cache");
                     db.execSQL(insert);
                     db.close();
+
+ */
 
                     //System.out.println("430  Guardando en la base de datos");
                     //Borrar odos los registros de la tabla  Utilities.tblMuestras

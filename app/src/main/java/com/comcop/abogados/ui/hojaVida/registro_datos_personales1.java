@@ -49,8 +49,8 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
     static final int DATE_ID = 0;
     Calendar C = Calendar.getInstance();
 
-    EditText EditSexo;
-    TextView mDisplayDate;
+    EditText EditSexo,EditNacimiento;
+    ImageView mDisplayDate;
     RadioGroup radioGroup;
     RadioButton radioButton;
     ImageView imagen;
@@ -64,7 +64,8 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
          * Registro de la fecha de nacimiento
          */
         setContentView(R.layout.activity_registro_datos_personales1);
-        mDisplayDate= (TextView) findViewById(R.id.EditNacimiento);
+        mDisplayDate= (ImageView) findViewById(R.id.imageTime);
+        EditNacimiento=(EditText)findViewById(R.id.EditNacimiento);
 
 
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +93,7 @@ public class registro_datos_personales1 extends AppCompatActivity implements Pop
                 //Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
                 String date = month + "/" + day + "/" + year;
-                mDisplayDate.setText(date);
+                EditNacimiento.setText(date);
             }
         };
 
